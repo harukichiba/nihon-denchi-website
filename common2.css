@@ -1,0 +1,301 @@
+/* ######## layout ######## */
+body {
+}
+
+#container {
+color: #333;
+text-align: center;
+font-size: 12px;
+}
+
+#header,
+#content,
+#footer{
+margin: 0 auto;
+background-color: #FFF;
+clear: both;
+text-align: left;
+width: 767px;
+}
+
+#content div.main {
+}
+
+#content div.menu {
+}
+/* ######## /layout ######## */
+
+
+/* ######## display ######## */
+/* ----------------------------------------------------------------
+font-size
+---------------------------------------------------------------- */
+.x_large {
+font-size: 1.4em;
+}
+
+.large {
+font-size: 1.2em;
+}
+
+.middle {
+font-size: 1em;
+}
+
+.small {
+font-size: .8em;
+}
+
+
+/* ----------------------------------------------------------------
+container
+---------------------------------------------------------------- */
+#container {
+}
+
+
+/* ----------------------------------------------------------------
+header
+---------------------------------------------------------------- */
+#header {
+position: relative;
+padding: 16px 0 8px 0;
+}
+
+#header div.navigator {
+padding-right: 4px;
+position: absolute;
+right: 0;
+top: 10px;
+}
+
+#header div.navigator li {
+padding-left: 18px;
+background: url(../images/ar01.gif) 12px center no-repeat;
+display: inline;
+}
+
+#header div.navigator_en {
+position: absolute;
+right: 240px;
+top: 10px;
+
+}
+
+#header div.navigator_en li {
+padding-left: 10px;
+background: url(../images/ar01.gif) left center no-repeat;
+text-align:left;
+}
+
+#header div.fontsize {
+padding-right: 4px;
+position: absolute;
+right: 0;
+top: 30px;
+}
+
+#header div.fontsize th {
+padding-right: 10px;
+background: url(../images/ar02.gif) right center no-repeat;
+border-right: 4px #FFF solid; 
+font-weight: normal;
+}
+
+#header div.fontsize td {
+padding:1px;
+border: 1px #DDD solid;
+}
+
+#header div.fontsize li {
+padding: 1px;
+float: left;
+}
+
+#header div.fontsize li a {
+background-position: left top;
+background-repeat: no-repeat;
+cursor: pointer;
+display: block;
+width: 19px;
+height: 19px;
+overflow: hidden;
+text-indent: -9999px;
+}
+
+#header div.fontsize li a.fs_small {
+background-image: url(../images/btn_fs_small_off.gif);
+}
+
+#header div.fontsize li a.fs_middle {
+background-image: url(../images/btn_fs_middle_off.gif);
+}
+
+#header div.fontsize li a.fs_big {
+background-image: url(../images/btn_fs_big_off.gif);
+}
+
+#header div.fontsize li a.fs_small:hover,
+#header div.fontsize li a.fs_small_on {
+background-image: url(../images/btn_fs_small_on.gif);
+}
+
+#header div.fontsize li a.fs_middle:hover,
+#header div.fontsize li a.fs_middle_on {
+background-image: url(../images/btn_fs_middle_on.gif);
+}
+
+#header div.fontsize li a.fs_big:hover,
+#header div.fontsize li a.fs_big_on {
+background-image: url(../images/btn_fs_big_on.gif);
+}
+
+
+/* ----------------------------------------------------------------
+global_navigator 
+---------------------------------------------------------------- */
+#global_navigator {
+	border-top:solid 2px #097ECD;
+	border-bottom:solid 1px #bebebe;
+	background:none;
+	background-color:#f6f6f6;
+	padding-bottom: 0px;
+}
+#global_navigator ul {
+margin: 0 auto;
+width: 767px;
+}
+
+#global_navigator li {
+float: left;
+}
+#global_navigator li{
+	/*border-bottom:solid 1px #cccccc;*/
+}
+
+/* ----------------------------------------------------------------
+content
+---------------------------------------------------------------- */
+#content {
+line-height: 1.4;
+}
+
+#content div.main {
+float: right;
+width: 586px;
+}
+
+#content div.menu {
+padding: 6px 0;
+float: left;
+width: 173px;
+}
+
+
+/* ----------------------------------------------------------------
+content :: topicpath
+---------------------------------------------------------------- */
+#content div.topicpath {
+padding: 4px 0;
+}
+
+#content div.topicpath li {
+display: inline;
+}
+
+#content div.topicpath li a {
+margin-right: .5em;
+}
+
+
+/* ----------------------------------------------------------------
+content :: main
+---------------------------------------------------------------- */
+#content div.main h2 {
+margin-bottom: 4px;
+padding: 1px;
+border: 1px #DDD solid;
+}
+
+
+#content div.main div.article {
+padding: 12px;
+background-color: #FFF;
+border: 1px #DDD solid;
+border-bottom: 0 none;
+}
+
+
+/* ----------------------------------------------------------------
+content :: main :: go_pagetop
+---------------------------------------------------------------- */
+#content div.main div.go_pagetop {
+border: 1px #DDD solid;
+border-top: 0 none;
+text-align: right;
+}
+
+#content div.main div.go_pagetop p {
+margin: 0 12px;
+padding: 8px 0;
+border-top: 1px #DDD dotted;
+}
+
+/* ----------------------------------------------------------------
+content :: menu
+---------------------------------------------------------------- */
+#content div.menu {
+border: 1px #DDD solid;
+}
+
+#content div.menu div.navigator,
+#content div.menu div.link {
+padding-left: 5px;
+}
+
+#content div.menu div.link li {
+padding-top: 6px;
+}
+
+
+/* ----------------------------------------------------------------
+footer
+---------------------------------------------------------------- */
+#footer {
+margin-top: 4px;
+background: #0e68ab url(../images/bg_footer_01.gif) left bottom repeat-x;
+border-top: 1px #DDD solid;
+width: auto;
+}
+
+
+#footer div {
+margin: 0 auto;
+width: 1000px;
+}
+
+#footer div.navigator {
+padding: 10px 0 5px 0;
+text-align: center;
+}
+#footer div.navigator ul{
+	margin-bottom:5px;
+}
+#footer div.navigator li {
+padding-left: 16px;
+background: url(../images/ar_footer_01.gif) 8px 3px no-repeat;
+display: inline;
+}
+
+#footer div.navigator li a {
+color: #FFF;
+}
+
+#footer div.copyright p {
+padding-top: 8px;
+color: #FFF;
+text-align: center;
+height: 18px;
+overflow: hidden;
+}
+/* ######## /display ######## */

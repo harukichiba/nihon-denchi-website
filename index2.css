@@ -1,0 +1,103 @@
+/* ----------------------------------------------------------------
+top_flash
+---------------------------------------------------------------- */
+#top_flash {
+background: url(../images/bg_index_01b.gif) left top repeat;
+}
+
+
+/* ----------------------------------------------------------------
+content
+---------------------------------------------------------------- */
+#content {
+margin-top: 10px;
+padding-bottom: 4px;
+text-align: center;
+width: auto;
+}
+
+#content div.bg {
+margin: 0 auto;
+text-align: left;
+width: 768px;
+}
+
+#content div.main div.article {
+margin:0px 0 12px 0;
+padding-bottom: 2px;
+padding-top: 2px;
+border: 1px #DDD solid;
+border-top:none;
+}
+
+#content div.main div.article table.list td {
+padding: 8px 4px;
+border-bottom: 1px #DDD dotted;
+vertical-align: top;
+}
+
+
+#content div.main div.article table.news02,
+#content div.main div.article table.news03{display:none;}
+
+#content div.main h2.newstitle{
+width:563px;
+height:28px;
+border:none;
+margin:0;
+padding:4px 5px 4px 20px;
+background: url(../images/titie_news.jpg) no-repeat left top;
+font-size:120%;
+display:table-cell;
+vertical-align:middle;
+position:relative;
+}
+#content div.main h2.newstitle span{
+	position:absolute;
+	top:4px;
+	right:5px;
+}
+#content div.main .acrobatlink{margin:20px 0 10px;}
+/*#content div.main .acrobatlink img{vertical-align:baseline;}*/
+/* ----------------------------------------------------------------
+content ::newsTab
+---------------------------------------------------------------- */
+#content div.main ul.newsTab{
+	margin-top:10px;
+	overflow:hidden;
+}
+#content div.main ul.newsTab li{
+	float:left;
+}
+
+/* ----------------------------------------------------------------
+content ::companyInfo
+---------------------------------------------------------------- */
+#content .companyInfo{
+	margin:10px 0 30px 0;
+}
+#content .companyInfo ul{
+	overflow:hidden;
+}
+#content .companyInfo ul li{
+	float:left;
+	margin-right:10px;
+}
+#content .companyInfo ul li:last-child{
+	margin-right:0;
+}
+
+/* ----------------------------------------------------------------
+content :: menu
+---------------------------------------------------------------- */
+#content div.menu {
+padding-top: 0;
+background-color: #FFF;
+}
+
+/* ----------------------------------------------------------------
+footer
+---------------------------------------------------------------- */
+#footer {
+margin-top: 0;
+}

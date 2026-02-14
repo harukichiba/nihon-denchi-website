@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <meta name="description" content="日本電池株式会社は、産業用・自動車用・家庭用バッテリーのリーディングカンパニーです。クリーンエネルギー社会の実現を目指しています。">
+    <meta name="keywords" content="日本電池,バッテリー,蓄電池,リチウムイオン,産業用電池,自動車用バッテリー,再生可能エネルギー,蓄電システム">
+    <title>日本電池株式会社</title>
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <style>
+        /* ===== reset.css inline backup ===== */
+
+        /* ===== common2.css ===== */
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN', 'メイリオ', Meiryo, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+        }
+
+        #container {
+            color: #333;
+            text-align: center;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        #header,
+        #content,
+        #footer {
+            margin: 0 auto;
+            background-color: #FFF;
+            clear: both;
+            text-align: left;
+            width: 960px;
+        }
+
+        /* ===== Header ===== */
+        #header {
+            position: relative;
+            padding: 18px 20px 10px 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        #header h1 a {
+            text-decoration: none;
+            color: #0a5c8a;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        #header h1 .logo-sub {
+            display: block;
+            font-size: 11px;
+            color: #666;
+            font-weight: normal;
+            letter-spacing: 1px;
+            margin-top: 2px;
+        }
+
+        #header div.navigator {
+            padding-right: 20px;
+            position: absolute;
+            right: 0;
+            top: 12px;
+        }
+
+        #header div.navigator li {
+            padding-left: 18px;
+            display: inline;
+            font-size: 12px;
+        }
+
+        #header div.navigator li a {
+            color: #555;
+            text-decoration: none;
+        }
+
+        #header div.navigator li a:hover {
+            color: #097ECD;
+            text-decoration: underline;
+        }
+
+        #header div.navigator_en {
+            position: absolute;
+            right: 20px;
+            top: 38px;
+            font-size: 11px;
+        }
+
+        #header div.navigator_en li a {
+            color: #888;
+            text-decoration: none;
+        }
+
+        #header div.fontsize {
+            padding-right: 20px;
+            position: absolute;
+            right: 0;
+            top: 55px;
+        }
+
+        #header div.fontsize th {
+            padding-right: 10px;
+            font-weight: normal;
+            font-size: 11px;
+            color: #666;
+        }
+
+        #header div.fontsize td ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #header div.fontsize li {
+            padding: 1px;
+            float: left;
+        }
+
+        #header div.fontsize li a {
+            display: inline-block;
+            padding: 2px 6px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 11px;
+            text-decoration: none;
+            color: #555;
+            margin-left: 2px;
+            background: linear-gradient(to bottom, #fff, #eee);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        #header div.fontsize li a:hover,
+        #header div.fontsize li a.active {
+            background: linear-gradient(to bottom, #097ECD, #0668a8);
+            color: #fff;
+            border-color: #0558a0;
+        }
+
+        /* ===== Global Navigator ===== */
+        #global_navigator {
+            border-top: solid 3px #097ECD;
+            border-bottom: solid 1px #bebebe;
+            background: linear-gradient(to bottom, #f8f9fa, #e8eaed);
+            padding: 0;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        #global_navigator ul {
+            margin: 0 auto;
+            width: 960px;
+            padding: 0;
+            list-style: none;
+            display: flex;
+        }
+
+        #global_navigator li {
+            flex: 1;
+        }
+
+        #global_navigator li a {
+            display: block;
+            padding: 14px 8px;
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            border-right: 1px solid #d0d0d0;
+            transition: all 0.2s ease;
+            /* Skeuomorphic button style */
+            background: linear-gradient(to bottom, #ffffff 0%, #f0f0f0 50%, #e0e0e0 51%, #ebebeb 100%);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 1px 3px rgba(0, 0, 0, 0.1);
+            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
+        }
+
+        #global_navigator li:first-child a {
+            border-left: 1px solid #d0d0d0;
+        }
+
+        #global_navigator li a:hover {
+            background: linear-gradient(to bottom, #e8f4fd 0%, #d0eafb 50%, #b8dff9 51%, #c5e5fa 100%);
+            color: #097ECD;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 2px 5px rgba(0, 0, 0, 0.15);
+        }
+
+        #global_navigator li a:active {
+            background: linear-gradient(to bottom, #b8dff9 0%, #c5e5fa 50%, #d0eafb 51%, #e8f4fd 100%);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+        }
+
+        /* ===== Top Flash / Hero ===== */
+        #top_flash {
+            margin: 0 auto;
+            width: 960px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #top_flash img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        #top_flash .hero-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.65), transparent);
+            padding: 30px 30px 20px;
+            color: #fff;
+        }
+
+        #top_flash .hero-overlay h2 {
+            font-size: 28px;
+            margin: 0 0 6px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: 3px;
+        }
+
+        #top_flash .hero-overlay p {
+            font-size: 14px;
+            margin: 0;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+            letter-spacing: 1px;
+        }
+
+        /* ===== Content ===== */
+        #content {
+            margin-top: 0;
+            padding: 20px 0;
+            text-align: center;
+            width: auto;
+            line-height: 1.5;
+        }
+
+        #content div.bg {
+            margin: 0 auto;
+            text-align: left;
+            width: 960px;
+            display: flex;
+        }
+
+        #content div.main {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        #content div.menu {
+            width: 220px;
+            flex-shrink: 0;
+        }
+
+        /* ===== News Title ===== */
+        #content div.main h2.newstitle {
+            border: none;
+            margin: 0;
+            padding: 10px 16px;
+            background: linear-gradient(to bottom, #0e7ec9, #0a5e9a);
+            font-size: 16px;
+            color: #fff;
+            position: relative;
+            border-radius: 4px 4px 0 0;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+        }
+
+        #content div.main h2.newstitle span {
+            position: absolute;
+            top: 50%;
+            right: 12px;
+            transform: translateY(-50%);
+        }
+
+        #content div.main h2.newstitle span a {
+            /* Skeuomorphic "list" button */
+            display: inline-block;
+            padding: 5px 14px;
+            font-size: 12px;
+            color: #097ECD;
+            background: linear-gradient(to bottom, #fff 0%, #f0f0f0 50%, #e0e0e0 51%, #ebebeb 100%);
+            border: 1px solid #bbb;
+            border-radius: 4px;
+            text-decoration: none;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+            transition: all 0.15s ease;
+        }
+
+        #content div.main h2.newstitle span a:hover {
+            background: linear-gradient(to bottom, #e8f4fd 0%, #d0eafb 50%, #b8dff9 51%, #c5e5fa 100%);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        }
+
+        #content div.main h2.newstitle span a:active {
+            background: linear-gradient(to bottom, #b8dff9 0%, #c5e5fa 50%, #d0eafb 51%, #e8f4fd 100%);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+        }
+
+        /* ===== News Tabs (Skeuomorphic) ===== */
+        #content div.main ul.newsTab {
+            margin: 0;
+            overflow: hidden;
+            list-style: none;
+            padding: 0;
+            display: flex;
+        }
+
+        #content div.main ul.newsTab li {
+            flex: 1;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        #content div.main ul.newsTab li a,
+        #content div.main ul.newsTab li span {
+            display: block;
+            padding: 12px 8px;
+            font-size: 13px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #555;
+            /* Skeuomorphic tab style */
+            background: linear-gradient(to bottom, #f5f5f5 0%, #e8e8e8 50%, #d8d8d8 51%, #e0e0e0 100%);
+            border: 1px solid #bbb;
+            border-top: none;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 1px 2px rgba(0, 0, 0, 0.08);
+            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+            transition: all 0.15s ease;
+        }
+
+        #content div.main ul.newsTab li.active a,
+        #content div.main ul.newsTab li.active span {
+            background: linear-gradient(to bottom, #1a8fd8 0%, #0e7ec9 50%, #0a6eb8 51%, #0d7ac4 100%);
+            color: #fff;
+            border-color: #0a5e9a;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        #content div.main ul.newsTab li:hover a,
+        #content div.main ul.newsTab li:hover span {
+            background: linear-gradient(to bottom, #e8f4fd 0%, #d0eafb 50%, #b8dff9 51%, #c5e5fa 100%);
+            color: #097ECD;
+        }
+
+        #content div.main ul.newsTab li.active:hover a,
+        #content div.main ul.newsTab li.active:hover span {
+            background: linear-gradient(to bottom, #1a8fd8 0%, #0e7ec9 50%, #0a6eb8 51%, #0d7ac4 100%);
+            color: #fff;
+        }
+
+        /* ===== Article / News List ===== */
+        #content div.main div.article {
+            margin: 0 0 16px 0;
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-top: none;
+            background-color: #fff;
+            border-radius: 0 0 4px 4px;
+        }
+
+        #content div.main div.article table.list {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        #content div.main div.article table.list td {
+            padding: 10px 6px;
+            border-bottom: 1px #ddd dotted;
+            vertical-align: top;
+            font-size: 13px;
+        }
+
+        #content div.main div.article table.list td:first-child {
+            white-space: nowrap;
+            color: #666;
+            font-size: 12px;
+            width: 100px;
+        }
+
+        #content div.main div.article table.list td a {
+            color: #097ECD;
+            text-decoration: none;
+        }
+
+        #content div.main div.article table.list td a:hover {
+            text-decoration: underline;
+        }
+
+        #content div.main div.article table.news02,
+        #content div.main div.article table.news03 {
+            display: none;
+        }
+
+        /* News icons */
+        .news-icon {
+            display: inline-block;
+            padding: 2px 8px;
+            font-size: 10px;
+            font-weight: bold;
+            border-radius: 3px;
+            margin-right: 6px;
+            vertical-align: middle;
+            line-height: 1.4;
+        }
+
+        .news-icon.release {
+            background: linear-gradient(to bottom, #e74c3c, #c0392b);
+            color: #fff;
+            border: 1px solid #a93226;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+        }
+
+        .news-icon.topics {
+            background: linear-gradient(to bottom, #3498db, #2980b9);
+            color: #fff;
+            border: 1px solid #2471a3;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+        }
+
+        .news-icon.info {
+            background: linear-gradient(to bottom, #2ecc71, #27ae60);
+            color: #fff;
+            border: 1px solid #1e8449;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+        }
+
+        /* ===== Company Info Section (Old-school Japanese Corporate Style) ===== */
+        h2.section-title {
+            border: none;
+            margin: 20px 0 0;
+            padding: 6px 10px 6px 12px;
+            background: #4a7ea8 url('data:image/gif;base64,R0lGODlhAQAYAMQAAE1/pU+BpVOEp1eHqVuKq1+NrWOPr2eSsGuVs2+XtHOatnadvnqgwH6jwoGlxIWoyImqyY2tzZGw0JWy0pm11Z252J672qC+3KTB3qjE4KzG4rDJ5LTL5rjO6LzQ6v///yH5BAAAAAAALAAAAAABABgAAAUqICCOZGmeaKqubOu+cCzPdG3feK7vfO//wCBgSCwaj8ikcsls0pDQqHRKAQA7') left top repeat-x;
+            font-size: 14px;
+            font-weight: bold;
+            color: #fff;
+            border-top: 2px solid #2e6690;
+            border-bottom: 1px solid #3a6e96;
+        }
+
+        #content .companyInfo {
+            margin: 0 0 20px 0;
+            padding: 12px 8px;
+            border: 1px solid #ccc;
+            border-top: none;
+            background: #f5f5f0;
+        }
+
+        #content .companyInfo ul {
+            overflow: hidden;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #content .companyInfo ul li {
+            float: left;
+            margin-right: 8px;
+        }
+
+        #content .companyInfo ul li:last-child {
+            margin-right: 0;
+        }
+
+        /* Old-school image button style */
+        #content .companyInfo ul li a {
+            display: block;
+            width: 160px;
+            height: 60px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            font-size: 13px;
+            font-weight: bold;
+            line-height: 60px;
+            border: 1px solid #999;
+            /* Classic beveled button */
+            background: #e8e8e0;
+            background: -webkit-gradient(linear, left top, left bottom, from(#f5f5ef), color-stop(0.5, #e8e8e0), color-stop(0.5, #deded6), to(#e2e2da));
+            background: linear-gradient(to bottom, #f5f5ef 0%, #e8e8e0 50%, #deded6 50%, #e2e2da 100%);
+            border-top: 1px solid #d0d0c8;
+            border-left: 1px solid #d0d0c8;
+            border-right: 1px solid #a0a098;
+            border-bottom: 1px solid #a0a098;
+            cursor: pointer;
+        }
+
+        #content .companyInfo ul li a .btn-arrow {
+            font-size: 10px;
+            color: #097ECD;
+            margin-right: 4px;
+        }
+
+        #content .companyInfo ul li a:hover {
+            background: #dde8f0;
+            background: linear-gradient(to bottom, #eaf2f8 0%, #dde8f0 50%, #d0dfe8 50%, #d5e2ea 100%);
+            color: #097ECD;
+            border-color: #097ECD;
+        }
+
+        #content .companyInfo ul li a:active {
+            background: linear-gradient(to bottom, #d0dfe8 0%, #d5e2ea 50%, #dde8f0 50%, #eaf2f8 100%);
+            border-top: 1px solid #a0a098;
+            border-left: 1px solid #a0a098;
+            border-right: 1px solid #d0d0c8;
+            border-bottom: 1px solid #d0d0c8;
+        }
+
+        /* ===== Side Menu ===== */
+        #content div.menu {
+            padding: 0;
+            background-color: #FFF;
+        }
+
+        #content div.menu .side-section {
+            margin-bottom: 16px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        #content div.menu .side-section h3 {
+            margin: 0;
+            padding: 10px 14px;
+            font-size: 13px;
+            color: #fff;
+            background: linear-gradient(to bottom, #0e7ec9, #0a5e9a);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        #content div.menu .side-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #content div.menu .side-section ul li {
+            border-bottom: 1px solid #eee;
+        }
+
+        #content div.menu .side-section ul li:last-child {
+            border-bottom: none;
+        }
+
+        /* Skeuomorphic side menu links */
+        #content div.menu .side-section ul li a {
+            display: block;
+            padding: 10px 14px;
+            text-decoration: none;
+            color: #333;
+            font-size: 12px;
+            background: linear-gradient(to bottom, #ffffff 0%, #f8f8f8 100%);
+            border-left: 3px solid transparent;
+            transition: all 0.15s ease;
+            box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+        }
+
+        #content div.menu .side-section ul li a:hover {
+            background: linear-gradient(to bottom, #e8f4fd, #d8eefb);
+            color: #097ECD;
+            border-left-color: #097ECD;
+        }
+
+        #content div.menu .side-section ul li a::before {
+            content: '▸ ';
+            color: #097ECD;
+            font-size: 10px;
+        }
+
+        /* ===== CI/Symbol Section ===== */
+        .ci-section {
+            margin-bottom: 16px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #f0f7ff, #e0eefa);
+            padding: 16px;
+            text-align: center;
+        }
+
+        .ci-section .ci-icon {
+            font-size: 48px;
+            margin-bottom: 8px;
+        }
+
+        .ci-section p {
+            font-size: 12px;
+            color: #555;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .ci-section a {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 6px 14px;
+            font-size: 12px;
+            color: #097ECD;
+            background: linear-gradient(to bottom, #fff 0%, #f0f0f0 50%, #e0e0e0 51%, #ebebeb 100%);
+            border: 1px solid #bbb;
+            border-radius: 4px;
+            text-decoration: none;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+            transition: all 0.15s ease;
+        }
+
+        .ci-section a:hover {
+            background: linear-gradient(to bottom, #e8f4fd 0%, #d0eafb 50%, #b8dff9 51%, #c5e5fa 100%);
+        }
+
+        /* ===== Footer ===== */
+        #footer {
+            margin-top: 0;
+            background: linear-gradient(to bottom, #0d6aab, #094f80);
+            border-top: 1px solid #0a5e9a;
+            width: auto;
+            padding: 0;
+        }
+
+        #footer div {
+            margin: 0 auto;
+            width: 960px;
+        }
+
+        #footer div.navigator {
+            padding: 16px 0 8px 0;
+            text-align: center;
+        }
+
+        #footer div.navigator ul {
+            margin-bottom: 6px;
+            padding: 0;
+            list-style: none;
+        }
+
+        #footer div.navigator li {
+            padding: 0 10px;
+            display: inline;
+            font-size: 12px;
+        }
+
+        #footer div.navigator li::before {
+            content: '|';
+            color: rgba(255, 255, 255, 0.3);
+            margin-right: 10px;
+        }
+
+        #footer div.navigator li:first-child::before {
+            content: '';
+            margin: 0;
+        }
+
+        #footer div.navigator li a {
+            color: #d0e8f8;
+            text-decoration: none;
+            transition: color 0.15s ease;
+        }
+
+        #footer div.navigator li a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        #footer div.copyright p {
+            padding: 10px 0 16px;
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            font-size: 11px;
+        }
+
+        /* ===== Clearfix ===== */
+        .clearfix::after {
+            content: '';
+            display: table;
+            clear: both;
+        }
+
+        /* ===== PDF icon ===== */
+        .pdf-icon {
+            display: inline-block;
+            padding: 1px 5px;
+            font-size: 9px;
+            font-weight: bold;
+            color: #fff;
+            background: linear-gradient(to bottom, #e74c3c, #c0392b);
+            border-radius: 2px;
+            margin-left: 4px;
+            vertical-align: middle;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+        }
+
+        /* ===== Acrobat link ===== */
+        .acrobatlink {
+            margin: 16px 0 10px;
+            font-size: 11px;
+            color: #888;
+        }
+    </style>
+</head>
+
+<body class="index">
+    <!-- container -->
+    <div id="container">
+        <!-- header -->
+        <div id="header">
+            <h1>
+                <a href="#">日本電池株式会社
+                    <span class="logo-sub">NIHON DENCHI CO., LTD.</span>
+                </a>
+            </h1>
+            <!-- navigator -->
+            <div class="navigator">
+                <ul>
+                    <li><a href="#">ホーム</a></li>
+                    <li><a href="#">サイトマップ</a></li>
+                </ul>
+            </div>
+            <div class="navigator_en">
+                <ul>
+                    <li><a href="#">English</a></li>
+                </ul>
+            </div>
+            <!-- /navigator -->
+            <!-- fontsize -->
+            <div class="fontsize">
+                <table border="0" cellspacing="0" cellpadding="0">
+                    <tbody>
+                        <tr>
+                            <th>文字サイズ</th>
+                            <td>
+                                <ul>
+                                    <li><a href="javascript:void(0);" class="fs_small"
+                                            onclick="document.getElementById('container').style.fontSize='11px'">小</a>
+                                    </li>
+                                    <li><a href="javascript:void(0);" class="fs_middle active"
+                                            onclick="document.getElementById('container').style.fontSize='13px'">中</a>
+                                    </li>
+                                    <li><a href="javascript:void(0);" class="fs_big"
+                                            onclick="document.getElementById('container').style.fontSize='15px'">大</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- /fontsize -->
+        </div>
+        <!-- /header -->
+        <!-- global_navigator -->
+        <div id="global_navigator">
+            <ul>
+                <li><a href="#">企業情報</a></li>
+                <li><a href="#">製品情報</a></li>
+                <li><a href="#">技術・研究開発</a></li>
+                <li><a href="#">サステナビリティ</a></li>
+                <li><a href="#">採用情報</a></li>
+            </ul>
+        </div>
+        <!-- /global_navigator -->
+
+        <!-- top_flash -->
+        <div id="top_flash">
+            <img src="top_nihondenchi.png" alt="日本電池株式会社 - 未来を充電する" width="960" height="440">
+            <div class="hero-overlay">
+                <h2>未来を、充電する。</h2>
+                <p>クリーンエネルギー社会の実現に向けて、革新的なバッテリー技術を提供します。</p>
+            </div>
+        </div>
+        <!-- /top_flash -->
+        <!-- content -->
+        <div id="content" class="clearfix">
+            <div class="bg">
+                <!-- main -->
+                <div class="main">
+                    <h2 class="newstitle">ニュースリリース＆お知らせ<span><a href="#">一覧へ</a></span></h2>
+                    <ul class="newsTab">
+                        <li class="newsTab01 active"><span>日本電池</span></li>
+                        <li class="newsTab02"><span>電池事業部</span></li>
+                        <li class="newsTab03"><span>エネルギー事業部</span></li>
+                    </ul>
+                    <div class="article">
+                        <!-- HD news -->
+                        <table border="0" cellspacing="0" cellpadding="0" class="list news01">
+                            <tbody>
+                                <tr>
+                                    <td>2026年2月14日</td>
+                                    <td><span class="news-icon release">リリース</span></td>
+                                    <td><a href="#">全固体電池の量産技術確立に関するお知らせ<span class="pdf-icon">PDF</span></a></td>
+                                </tr>
+                                <tr>
+                                    <td>2026年2月10日</td>
+                                    <td><span class="news-icon release">リリース</span></td>
+                                    <td><a href="#">2026年3月期 第3四半期決算短信<span class="pdf-icon">PDF</span></a></td>
+                                </tr>
+                                <tr>
+                                    <td>2026年2月5日</td>
+                                    <td><span class="news-icon topics">トピックス</span></td>
+                                    <td><a href="#">次世代リチウムイオン電池の開発成功について</a></td>
+                                </tr>
+                                <tr>
+                                    <td>2026年1月28日</td>
+                                    <td><span class="news-icon info">お知らせ</span></td>
+                                    <td><a href="#">本社工場 ISO14001:2015 認証更新のお知らせ</a></td>
+                                </tr>
+                                <tr>
+                                    <td>2026年1月15日</td>
+                                    <td><span class="news-icon release">リリース</span></td>
+                                    <td><a href="#">大型蓄電システム「PowerVault Pro」の販売開始について<span
+                                                class="pdf-icon">PDF</span></a></td>
+                                </tr>
+                                <tr>
+                                    <td>2026年1月8日</td>
+                                    <td><span class="news-icon info">お知らせ</span></td>
+                                    <td><a href="#">年末年始休業のお知らせ</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!-- Battery Division news -->
+                        <table border="0" cellspacing="0" cellpadding="0" class="list news02">
+                            <tbody>
+                                <tr>
+                                    <td>2026年2月12日</td>
+                                    <td><span class="news-icon release">リリース</span></td>
+                                    <td><a href="#">EV向け高容量バッテリーパック「NB-EV500」量産開始</a></td>
+                                </tr>
+                                <tr>
+                                    <td>2026年2月3日</td>
+                                    <td><span class="news-icon topics">トピックス</span></td>
+                                    <td><a href="#">産業用鉛蓄電池のリサイクル率99%達成について</a></td>
+                                </tr>
+                                <tr>
+                                    <td>2026年1月22日</td>
+                                    <td><span class="news-icon info">お知らせ</span></td>
+                                    <td><a href="#">自動車用バッテリー「ストロングX」シリーズリニューアルのお知らせ</a></td>
+                                </tr>
+                                <tr>
+                                    <td>2026年1月10日</td>
+                                    <td><span class="news-icon release">リリース</span></td>
+                                    <td><a href="#">フォークリフト用リチウムイオン電池の新シリーズ発売<span class="pdf-icon">PDF</span></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!-- Energy Division news -->
+                        <table border="0" cellspacing="0" cellpadding="0" class="list news03">
+                            <tbody>
+                                <tr>
+                                    <td>2026年2月8日</td>
+                                    <td><span class="news-icon release">リリース</span></td>
+                                    <td><a href="#">家庭用蓄電システム「エコチャージ ホーム」新モデル発売</a></td>
+                                </tr>
+                                <tr>
+                                    <td>2026年1月29日</td>
+                                    <td><span class="news-icon topics">トピックス</span></td>
+                                    <td><a href="#">太陽光発電連携蓄電システムの実証実験結果について</a></td>
+                                </tr>
+                                <tr>
+                                    <td>2026年1月18日</td>
+                                    <td><span class="news-icon info">お知らせ</span></td>
+                                    <td><a href="#">VPP（仮想発電所）実証事業への参画について</a></td>
+                                </tr>
+                                <tr>
+                                    <td>2026年1月5日</td>
+                                    <td><span class="news-icon release">リリース</span></td>
+                                    <td><a href="#">大規模太陽光発電所向け蓄電設備の納入実績が1GWh突破<span class="pdf-icon">PDF</span></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <h2 class="section-title">企業情報</h2>
+                    <div class="companyInfo">
+                        <ul>
+                            <li><a href="#"><span class="btn-arrow">▶</span>トップメッセージ</a></li>
+                            <li><a href="#"><span class="btn-arrow">▶</span>会社概要</a></li>
+                            <li><a href="#"><span class="btn-arrow">▶</span>技術・研究開発</a></li>
+                            <li><a href="#"><span class="btn-arrow">▶</span>拠点案内</a></li>
+                        </ul>
+                    </div>
+                    <!-- /article -->
+                </div>
+                <!-- /main -->
+                <!-- menu -->
+                <div class="menu">
+                    <!-- CI Section -->
+                    <div class="ci-section">
+                        <div class="ci-icon">🔋</div>
+                        <p>日本電池のシンボルマーク<br>「未来を充電する」をコンセプトに</p>
+                        <a href="#">詳しくはこちら</a>
+                    </div>
+
+                    <!-- Group Companies -->
+                    <div class="side-section">
+                        <h3>グループ企業</h3>
+                        <ul>
+                            <li><a href="#">日本電池エンジニアリング株式会社</a></li>
+                            <li><a href="#">日本電池テクノサービス株式会社</a></li>
+                            <li><a href="#">NDエネルギーソリューション株式会社</a></li>
+                            <li><a href="#">日本電池リサイクル株式会社</a></li>
+                            <li><a href="#">ND海外事業株式会社</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div class="side-section">
+                        <h3>関連リンク</h3>
+                        <ul>
+                            <li><a href="#">IR情報（投資家の皆さまへ）</a></li>
+                            <li><a href="#">電子公告</a></li>
+                            <li><a href="#">製品カタログダウンロード</a></li>
+                            <li><a href="#">お問い合わせ</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /menu -->
+            </div>
+        </div>
+        <!-- /content -->
+        <div id="footer">
+            <!-- navigator -->
+            <div class="navigator">
+                <ul>
+                    <li><a href="#">企業倫理方針</a></li>
+                    <li><a href="#">個人情報保護方針</a></li>
+                    <li><a href="#">品質方針</a></li>
+                    <li><a href="#">環境方針</a></li>
+                    <li><a href="#">人権方針</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#">反社会的勢力への対応方針</a></li>
+                    <li><a href="#">ディスクロージャー・ポリシー</a></li>
+                    <li><a href="#">本サイトご利用にあたって</a></li>
+                    <li><a href="#">お問い合わせ</a></li>
+                </ul>
+            </div>
+            <!-- /navigator -->
+            <!-- copyright -->
+            <div class="copyright">
+                <p><small>Copyright &copy;
+                        <script type="text/javascript">document.write(new Date().getFullYear() + ' ');</script>Nihon
+                        Denchi Co., Ltd. All rights reserved.
+                    </small></p>
+            </div>
+            <!-- /copyright -->
+        </div>
+    </div>
+    <!-- /container -->
+
+    <script>
+        // News tab switching
+        document.addEventListener('DOMContentLoaded', function () {
+            var tabs = document.querySelectorAll('ul.newsTab li');
+
+            tabs.forEach(function (tab) {
+                tab.addEventListener('click', function () {
+                    // Remove active from all tabs
+                    tabs.forEach(function (t) { t.classList.remove('active'); });
+                    // Add active to clicked tab
+                    this.classList.add('active');
+
+                    // Hide all news tables
+                    document.querySelector('table.news01').style.display = 'none';
+                    document.querySelector('table.news02').style.display = 'none';
+                    document.querySelector('table.news03').style.display = 'none';
+
+                    // Show corresponding table
+                    if (this.classList.contains('newsTab01')) {
+                        document.querySelector('table.news01').style.display = 'table';
+                    } else if (this.classList.contains('newsTab02')) {
+                        document.querySelector('table.news02').style.display = 'table';
+                    } else {
+                        document.querySelector('table.news03').style.display = 'table';
+                    }
+                });
+            });
+
+            // Font size buttons
+            var fsBtns = document.querySelectorAll('.fontsize a');
+            fsBtns.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    fsBtns.forEach(function (b) { b.classList.remove('active'); });
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
