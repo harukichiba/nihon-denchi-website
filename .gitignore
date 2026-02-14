@@ -22,8 +22,9 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-# Node modules (if needed in future)
+# Node modules
 node_modules/
+package-lock.json
 
 # Environment variables
 .env
